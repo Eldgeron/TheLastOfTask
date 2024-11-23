@@ -24,10 +24,15 @@ jobs:
         run: dotnet restore
       # Build the project
       - name: Build
-        run: dotnet build
+        run: dotnet build --no-restore
+      # Install Node.js 
+      - name: Setup Node.js 
+        uses: actions/setup-node@v3 
+        with: 
+          node-version: '18.x'
       # Install Playwright browsers
-      - name: Ensure browsers are installed
-        run: pwsh ${{github.workspace}}/tests/Library.Tests.Ui/bin/Debug/net8.0/playwright.ps1 install --with-deps
+      - name: Install Playwright
+        run: npx playwright install --with-deps
       # Run NUnit Playwright tests
       - name: Run UI tests
         run: dotnet tests ${{github.workspace}}/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
