@@ -16,7 +16,7 @@ public class WebTablePageTests
         Page = await _browserSetUp
             .WithBrowser(BrowserType.Chromium)
             .WithChannel("chrome")
-            .InHeadlessMode(false)
+            .InHeadlessMode(true)
             .WithSlowMo(100)
             .WithTimeout(10000)
             .WithVideoSize(1900, 1080)
