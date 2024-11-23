@@ -38,7 +38,7 @@ jobs:
         run: pwd 
       # List directory contents to verify presence of project file 
       - name: List directory contents   
-        run: ls ${{github.workspace}}/tests/Library.Tests.Ui/
+        run: ls ${{github.workspace}}/Library.Tests.Ui/
       # Run NUnit Playwright tests
       - name: Run UI tests
         run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
