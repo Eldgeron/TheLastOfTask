@@ -6,7 +6,6 @@ using BrowserType = Microsoft.Playwright.BrowserType;
 
 namespace Library.Tests.Ui.Tests;
 
-//TODO: cover with tests
 [TestFixture]
 public class BrokenLinksAndImagesPageTests
 {

@@ -128,26 +128,7 @@ public class TextBoxPageTests
        });
     }
 
-    [Test]
-    public async Task Video()
-    {
-        var browser = await Playwright.CreateAsync(); 
-        var chromium = await browser.Chromium.LaunchAsync(new BrowserTypeLaunchOptions 
-        { 
-            Headless = false 
-        }); 
-        var context = await chromium.NewContextAsync(new BrowserNewContextOptions 
-        { 
-            ViewportSize = new ViewportSize { Width = 1900, Height = 1080 }, 
-            RecordVideoDir = "C:\\Users\\ganna\\source\\repos\\lesson_32\\videos", 
-            RecordVideoSize = new RecordVideoSize { Width = 1900, Height = 1080 } }); 
-        var page = await context.NewPageAsync(); 
-        await page.GotoAsync("https://demoqa.com/text-box");
-       
-        // Виконайте деякі дії на сторінці
-        await page.CloseAsync(); 
-        await context.CloseAsync();
-    }
+    
 
     [OneTimeTearDown]
     public async Task OneTimeTearDown()
