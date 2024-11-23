@@ -24,8 +24,7 @@ public class TextBoxPageTests
             .WithTimeout(10000)
             .WithViewportSize(1900, 1080)
             .WithVideoSize(1900, 1080)
-            //Dont forget to change the path to the folder where you want to save the video
-            .SaveVideo("C:\\Users\\ganna\\source\\repos\\lesson_32\\videos")
+            .SaveVideo("videos/")
             .WithArgs("--start-maximized")
             .OpenNewPage<TextBoxPage>();
         _browserSetUp.AddRequestResponseLogger();
