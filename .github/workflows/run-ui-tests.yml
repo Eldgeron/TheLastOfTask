@@ -43,11 +43,7 @@ jobs:
         with: 
           node-version: '18.x'
           check-latest: true
-      
-      # instal package
-      - name: install node package
-        run: npm install
-        
+
       # Ensure browsers are installed
       - name: Install Playwright
         run: npx playwright install --with-deps
