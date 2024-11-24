@@ -42,11 +42,14 @@ jobs:
         uses: actions/setup-node@v4.1.0 
         with: 
           node-version: '18.x'
-           check-latest: true
-
+          check-latest: true
+      
+      # instal package
+      - name: install node package
+        run: npm install
+        
       # Ensure browsers are installed
       - name: Install Playwright
-        run: npm install
         run: npx playwright install --with-deps
 
       # Run NUnit Playwright tests
