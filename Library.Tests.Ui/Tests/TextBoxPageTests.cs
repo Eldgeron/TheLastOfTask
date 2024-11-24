@@ -128,30 +128,7 @@ public class TextBoxPageTests
        });
     }
 
-<<<<<<< HEAD
-    [Test]
-    public async Task Video()
-    {
-        var browser = await Playwright.CreateAsync(); 
-        var chromium = await browser.Chromium.LaunchAsync(new BrowserTypeLaunchOptions 
-        { 
-            Headless = false 
-        }); 
-        var context = await chromium.NewContextAsync(new BrowserNewContextOptions 
-        { 
-            ViewportSize = new ViewportSize { Width = 1900, Height = 1080 }, 
-            RecordVideoDir = "C:\\Users\\ganna\\source\\repos\\lesson_32\\videos", 
-            RecordVideoSize = new RecordVideoSize { Width = 1900, Height = 1080 } }); 
-        var page = await context.NewPageAsync(); 
-        await page.GotoAsync("https://demoqa.com/text-box");
-       
-        // ��������� ���� 䳿 �� �������
-        await page.CloseAsync(); 
-        await context.CloseAsync();
-    }
-=======
     
->>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
 
     [OneTimeTearDown]
     public async Task OneTimeTearDown()
