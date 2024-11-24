@@ -45,7 +45,7 @@ jobs:
 
       # Ensure browsers are installed
       - name: Install Playwright
-        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+        run: npx playwright install --with-deps
 
       # Run NUnit Playwright tests
       - name: Run UI tests
