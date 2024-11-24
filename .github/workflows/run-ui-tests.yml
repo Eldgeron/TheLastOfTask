@@ -19,11 +19,19 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
+<<<<<<< HEAD
+=======
+      # List files in directory 
+      - name: List files 
+        run: ls -la ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0
+        
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
       # Build the project
       - name: Build
+<<<<<<< HEAD
         run: dotnet build
       # Install Playwright browsers
       - name: Ensure browsers are installed
@@ -31,13 +39,39 @@ jobs:
       # Run NUnit Playwright tests
       - name: Run UI tests
         run: dotnet tests ${{github.workspace}}/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
+=======
+        run: dotnet build --no-restore
+      # Install Node.js 
+      - name: Setup Node.js 
+        uses: actions/setup-node@v3 
+        with: 
+          node-version: '18.x'
+      # Install Playwright browsers
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      # Output the current directory 
+      - name: Show current directory 
+        run: pwd 
+      # List directory contents to verify presence of project file 
+      - name: List directory contents   
+        run: ls ${{github.workspace}}/Library.Tests.Ui/
+      # Run NUnit Playwright tests
+      - name: Run UI tests
+        env:
+          PLAYWRIGHT_NODE_OPTIONS: '--headless'
+        run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
       # Upload test results as artifacts
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
+<<<<<<< HEAD
           path: ${{github.workspace}}/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
+=======
+          path: ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
 
   test-results:
     name: Get Test Results
@@ -53,4 +87,8 @@ jobs:
           name: UI tests results
           reporter: dotnet-trx
           path: './test-results/test-results.xml'
+<<<<<<< HEAD
           fail-on-error: 'false'
+=======
+          fail-on-error: 'false'
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19

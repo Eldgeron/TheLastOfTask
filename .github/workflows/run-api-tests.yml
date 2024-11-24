@@ -4,8 +4,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+<<<<<<< HEAD
     
 permission:
+=======
+permissions: 
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
   contents: write
   issues: write 
   pull-requests: write 
@@ -23,6 +27,19 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
+<<<<<<< HEAD
+=======
+
+      # Authenticate using GitHub App 
+      - name: Authenticate GitHub App 
+        run: | 
+          echo "${{ secrets.GITHUB_APP_PRIVATE_KEY }}" > private-key.pem 
+          export GITHUB_APP_ID=1068219 
+          export GITHUB_INSTALLATION_ID=57554126  
+          export GITHUB_PRIVATE_KEY=$(cat private-key.pem) 
+          echo "GitHub App authenticated"
+      
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
@@ -53,4 +70,9 @@ jobs:
           name: api tests results
           path: './test-results.trx'
           reporter: dotnet-trx
+<<<<<<< HEAD
           fail-on-error: false
+=======
+          fail-on-error: false
+          token: ${{ secrets.GITHUB_PAT}}
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19

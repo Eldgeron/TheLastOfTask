@@ -6,7 +6,10 @@ using BrowserType = Microsoft.Playwright.BrowserType;
 
 namespace Library.Tests.Ui.Tests;
 
+<<<<<<< HEAD
 //TODO: cover with tests
+=======
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
 [TestFixture]
 public class BrokenLinksAndImagesPageTests
 {

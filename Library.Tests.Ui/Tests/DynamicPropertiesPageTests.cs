@@ -20,7 +20,11 @@ public class DynamicPropertiesPageTests : PageTest
         Page = await _browserSetUp
             .WithBrowser(Chromium)
             .WithChannel("chrome")
+<<<<<<< HEAD
             .InHeadlessMode(false)
+=======
+            .InHeadlessMode(true)
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
             .WithSlowMo(100)
             .WithTimeout(10000)
             .WithViewportSize(1900, 1080)

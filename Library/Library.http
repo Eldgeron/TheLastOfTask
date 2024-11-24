@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @Library_HostAddress = http://localhost:5100
+=======
+@Library_HostAddress = http://localhost:5036
+>>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
 
 GET {{Library_HostAddress}}/weatherforecast/
 Accept: application/json
