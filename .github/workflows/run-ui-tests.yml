@@ -52,6 +52,10 @@ jobs:
       - name: Run UI tests
         run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
      
+      # List test results files 
+      - name: List test results files 
+        run: ls ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+        
       # Upload test results as artifacts
       - name: Upload a Build Artifact
         if: success() || failure()
