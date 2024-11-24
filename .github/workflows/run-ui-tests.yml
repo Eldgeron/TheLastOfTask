@@ -50,11 +50,11 @@ jobs:
       # Run NUnit Playwright tests
       - name: Run UI tests
         run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
-      
-        # Upload test results as artifacts
+     
+      # Upload test results as artifacts
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.2
         with:
           name: test-results
           path: ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
@@ -64,8 +64,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: run-ui-tests
     steps:
+      
       # Display test results using dorny/test-reporter
-      - name: Test Report
+      - name: Test Reporter
         uses: dorny/test-reporter@v1.9.1
         if: success() || failure() # Always run this step, even if previous steps fail
         with:
