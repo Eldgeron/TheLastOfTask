@@ -1,12 +1,4 @@
 namespace Library.Tests.Ui.Tests;
-<<<<<<< HEAD
-
-//TODO: cover with tests
-[TestFixture]
-public class RadioButtonPageTests
-{
-}
-=======
 using Library.Test.Utils.Tests.Ui.Fixtures;
 using Library.Test.Utils.Tests.Ui.PageObjects;
 using static Library.Test.Utils.Tests.Ui.Fixtures.BrowserType;
@@ -73,4 +65,3 @@ public class RadioButtonPageTests
         Assert.That(result, Is.False);
     }
 }  
->>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19

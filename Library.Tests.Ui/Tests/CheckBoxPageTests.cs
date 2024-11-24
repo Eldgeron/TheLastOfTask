@@ -26,12 +26,7 @@ public class CheckBoxPageTests
             .WithTimeout(10000)
             .WithViewportSize(1900, 1080)
             .WithVideoSize(1900, 1080)
-<<<<<<< HEAD
-            //Dont forget to change the path to the folder where you want to save the video
-            .SaveVideo("C:\\Users\\ganna\\source\\repos\\lesson_32\\videos")
-=======
             .SaveVideo("videos/")
->>>>>>> bdfedbb27f6c9eb7883d05d7d7ba1be0f09aed19
             //.WithArgs("--start-maximized")
             .WithArgs("--kiosk")
             .OpenNewPage<CheckBoxPage>();
