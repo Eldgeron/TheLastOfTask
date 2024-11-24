@@ -77,7 +77,7 @@ jobs:
         with:
           artifact: artifact
           name: UI tests results
-          reporter: nunit
+          reporter: jest-junit
           path: './test-results/test_results.xml'
           fail-on-error: false
           fail-on-empty: false
