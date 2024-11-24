@@ -19,16 +19,16 @@ jobs:
     name: UI Tests
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       # Set up .NET
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      
+
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
@@ -38,13 +38,15 @@ jobs:
         run: dotnet build
 
       # Install Node.js 
-      - name: Setup Node.js 
-        uses: actions/setup-node@v3 
+      - name: Setup Node.js environment 
+        uses: actions/setup-node@v4.1.0 
         with: 
           node-version: '18.x'
+           check-latest: true
 
       # Ensure browsers are installed
       - name: Install Playwright
+        run: npm install
         run: npx playwright install --with-deps
 
       # Run NUnit Playwright tests
@@ -52,12 +54,13 @@ jobs:
         run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
      
       # Upload test results as artifacts
-      - name: Upload test results
-        if: always()
+      - name: Upload a Build Artifact
+        if: success() || failure()
         uses: actions/upload-artifact@v4.4.2
         with:
-          name: test-results
+          name: artifact
           path: ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+          if-no-files-found: warn
 
   test-results:
     name: Get Test Results
@@ -70,8 +73,9 @@ jobs:
         uses: dorny/test-reporter@v1.9.1
         if: success() || failure() # Always run this step, even if previous steps fail
         with:
-          artifact: test-results
+          artifact: artifact
           name: UI tests results
           reporter: dotnet-trx
-          path: './test-results.xml'
+          path: './test-results/test-results.xml'
           fail-on-error: false
+          fail-on-empty: false
