@@ -22,10 +22,16 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
-      # Check token permissions 
-      - name: Check token permissions 
+
+      # Authenticate using GitHub App 
+      - name: Authenticate GitHub App 
         run: | 
-          curl -H "Authorization: token ${{ secrets.SECRESFORLASTOFTASK }}" https://api.github.com/repos/${{ github.repository }}
+          echo "${{ secrets.GITHUB_APP_PRIVATE_KEY }}" > private-key.pem 
+          export GITHUB_APP_ID=1068219 
+          export GITHUB_INSTALLATION_ID=57554126  
+          export GITHUB_PRIVATE_KEY=$(cat private-key.pem) 
+          echo "GitHub App authenticated"
+      
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
@@ -57,4 +63,4 @@ jobs:
           path: './test-results.trx'
           reporter: dotnet-trx
           fail-on-error: false
-          token: ${{ secrets.SECRESFORLASTOFTASK }}
+          token: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
