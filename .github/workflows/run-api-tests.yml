@@ -22,6 +22,10 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
+      # Check token permissions 
+      - name: Check token permissions 
+        run: | 
+          curl -H "Authorization: token ${{ secrets.SECRESFORLASTOFTASK }}" https://api.github.com/repos/${{ github.repository }}
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
