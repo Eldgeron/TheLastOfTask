@@ -68,4 +68,4 @@ jobs:
           path: './test-results.trx'
           reporter: dotnet-trx
           fail-on-error: false
-          token: ${{ secrets.SECRESFORLASTOFTASK}}
+          token: ${{ secrets.GITHUB_APP_PRIVATE_KEY}}
