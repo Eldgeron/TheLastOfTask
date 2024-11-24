@@ -19,6 +19,10 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
+      # List files in directory 
+      - name: List files 
+        run: ls -la ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0
+        
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
