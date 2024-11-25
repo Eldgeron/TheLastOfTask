@@ -50,7 +50,7 @@ jobs:
 
       # Run NUnit Playwright tests
       - name: Run UI tests
-        run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "nunit;LogFileName=test_results.xml" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+        run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "junit;LogFileName=test_results.xml" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
 
       # List test results files
       - name: List test results files
