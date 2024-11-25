@@ -62,6 +62,6 @@ jobs:
         with:
           artifact: test-results
           name: api tests results
-          path: './test-results.trx'
+          path: './test-results/test-results.trx'
           reporter: dotnet-trx
           fail-on-error: false
