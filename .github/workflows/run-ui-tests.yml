@@ -50,7 +50,7 @@ jobs:
 
       # Run NUnit Playwright tests
       - name: Run UI tests
-        run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "junit;LogFileName=test_results.xml" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
+        run: dotnet test ${{github.workspace}}/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.xml" --results-directory ${{github.workspace}}/Library.Tests.Ui/bin/Debug/net8.0/test-results
 
       # List test results files
       - name: List test results files
@@ -77,7 +77,7 @@ jobs:
         with:
           artifact: artifact
           name: UI tests results
-          reporter: jest-junit
-          path: './test-results/test_results.xml'
+          reporter: dotnet-trx
+          path: './test-results/test_results.trx'
           fail-on-error: false
           fail-on-empty: false
